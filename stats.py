@@ -10,3 +10,6 @@ def map_characters_count(text):
         else:
             result_dict[char] = 1
     return result_dict
+
+def sort_characters_count_dict(char_dict):
+    return sorted(char_dict.items(), key=lambda x: x[1], reverse=True)
