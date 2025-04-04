@@ -1,4 +1,5 @@
 from stats import *
+import sys
 
 
 def get_book_text(path):
@@ -18,7 +19,8 @@ def format_character_count(characters):
     return "\n".join(f"{char}: {count}" for char, count in characters)
 
 def main():
-    text = get_book_text("./books/frankenstein.txt")
+    path = sys.argv[1]
+    text = get_book_text(path)
     num_words = get_num_words(text)
     num_characters = map_characters_count(text)
     sorted_characters = sort_characters_count_dict(num_characters)
@@ -34,4 +36,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        main()
